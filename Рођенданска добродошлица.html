@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рођенданска добродошлица</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap&subset=cyrillic" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: #fff;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .text-container {
+      max-width: 90%;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+      color: #007BFF;
+      animation: popIn 1.5s ease-in-out;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #333;
+      line-height: 1.6;
+      font-style: italic;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: hsl(var(--hue), 100%, 70%);
+      animation: fall 5s linear infinite;
+      top: -10px;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    #qr {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="confetti" id="confetti"></div>
+
+  <div class="text-container">
+    <p>Особа која пуни 30, али у души дете… сложићете се са мном 😁<br>
+    Комедија, драма, шоу-програм – све у једној особи.<br>
+    Премијера сваког дана. Публика одушевљена.<br>
+    Звезда наставља да сија, а данас је његово вече да се забави и ужива у вашем друштву.<br>
+    Баш како он то уме, са пуно смеха, љубави и забаве!<br><br>
+    Хвала што сте део овог изненађења!<br>
+    Уживајмо вечерас! 😊<br><br>
+    <em>У потпису,<br>Његова лепша половина 😊</em>
+    </p>
+    <div id="qr"></div>
+  </div>
+
+  <script>
+    // Конфете
+    const confettiContainer = document.getElementById('confetti');
+    for (let i = 0; i < 150; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti-piece');
+      confetti.style.left = `${Math.random() * 100}%`;
+      confetti.style.setProperty('--hue', Math.floor(Math.random() * 360));
+      confetti.style.animationDelay = `${Math.random() * 5}s`;
+      confettiContainer.appendChild(confetti);
+    }
+  </script>
+</body>
+</html>
